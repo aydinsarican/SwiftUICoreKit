@@ -7,12 +7,19 @@
 
 import SwiftUI
 
-struct RatingView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+public struct RatingView: View {
+    let rating: Double
+
+    public var body: some View {
+        HStack(spacing: 4) {
+            ForEach(0..<5) { index in
+                Image(systemName: index < Int(rating) ? "star.fill" : "star")
+                    .foregroundColor(index < Int(rating) ? .yellow : .gray)
+            }
+        }
     }
 }
 
 #Preview {
-    RatingView()
+    RatingView(rating: 3)
 }

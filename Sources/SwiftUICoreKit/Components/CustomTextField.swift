@@ -7,12 +7,25 @@
 
 import SwiftUI
 
-struct CustomTextField: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+public struct CustomTextField: View {
+    let placeholder: String
+    @Binding var text: String
+
+    public init(placeholder: String, text: Binding<String>) {
+        self.placeholder = placeholder
+        self._text = text
+    }
+
+    public var body: some View {
+        TextField(placeholder, text: $text)
+            .padding()
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(8)
+            .padding(.horizontal, 16)
     }
 }
 
 #Preview {
-    CustomTextField()
+    @Previewable @State var username = "John Doe"
+    CustomTextField(placeholder: "Username", text: $username)
 }
