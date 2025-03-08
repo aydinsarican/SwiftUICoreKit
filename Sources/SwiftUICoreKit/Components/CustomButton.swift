@@ -41,7 +41,7 @@ public struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(title: "Button", icon: nil, backgroundColor: .purple) {
+    CustomButton(title: "Button", icon: nil) {
         //Action
     }
 }
