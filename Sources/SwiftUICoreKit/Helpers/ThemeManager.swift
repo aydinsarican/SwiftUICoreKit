@@ -19,6 +19,8 @@ public class ThemeManager: ObservableObject {
     @Published public var notrColor: Color
     @Published public var notrDarkerColor: Color
 
+    @Published public var font: Font
+
     private init() {
         self.primaryColor = Color("PrimaryColor")
         self.primaryLightColor = Color("PrimaryLightColor")
@@ -28,6 +30,12 @@ public class ThemeManager: ObservableObject {
         self.lightTextColor = Color("LightTextColor")
         self.notrColor = Color("NotrColor")
         self.notrDarkerColor = Color("NotrDarkerColor")
+
+        self.font = Font.custom("System", size: 16) // Varsayılan font
+    }
+
+    public func updateFont(name: String, size: CGFloat) {
+        self.font = Font.custom(name, size: size)
     }
 
     public func updateColors(
