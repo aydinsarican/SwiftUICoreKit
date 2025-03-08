@@ -8,15 +8,15 @@
 import SwiftUI
 
 public struct CustomButton: View {
+    @Environment(\.themeManager) private var theme
+
     let title: String
     let icon: String?
     let action: () -> Void
-    let backgroundColor: Color
 
-    public init(title: String, icon: String? = nil, backgroundColor: Color = .blue, action: @escaping () -> Void) {
+    public init(title: String, icon: String? = nil, action: @escaping () -> Void) {
         self.title = title
         self.icon = icon
-        self.backgroundColor = backgroundColor
         self.action = action
     }
 
@@ -33,7 +33,7 @@ public struct CustomButton: View {
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .background(backgroundColor)
+            .background(theme.primaryColor)
             .cornerRadius(10)
         }
         .padding(.horizontal, 16)
