@@ -20,11 +20,19 @@ public struct CustomButton: View {
     let icon: String?
     let action: () -> Void
     let type: CustomButtonType
+    let showShadow: Bool
 
-    public init(title: String, icon: String? = nil, type: CustomButtonType = .primary, action: @escaping () -> Void) {
+    public init(
+        title: String,
+        icon: String? = nil,
+        type: CustomButtonType = .primary,
+        showShadow: Bool = false,
+        action: @escaping () -> Void
+    ) {
         self.title = title
         self.icon = icon
         self.type = type
+        self.showShadow = showShadow
         self.action = action
     }
 
@@ -43,6 +51,7 @@ public struct CustomButton: View {
             .frame(maxWidth: .infinity)
             .background(buttonBackground)
             .cornerRadius(10)
+            .shadow(color: showShadow ? Color.black.opacity(0.15) : Color.clear, radius: showShadow ? 4 : 0, x: 0, y: 2)
         }
         .padding(.horizontal, 16)
     }
@@ -70,7 +79,7 @@ public struct CustomButton: View {
 
 #Preview {
     VStack(spacing: 16) {
-        CustomButton(title: "Primary Button", type: .primary) {}
+        CustomButton(title: "Primary Button", type: .primary, showShadow: true) {}
         CustomButton(title: "Secondary Button", type: .secondary) {}
         CustomButton(title: "Custom Button", type: .custom(background: .purple, font: .system(size: 20, weight: .bold))) {}
     }
