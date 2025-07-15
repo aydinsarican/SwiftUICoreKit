@@ -8,8 +8,6 @@
 import SwiftUI
 
 public class ThemeManager: ObservableObject {
-    @MainActor public static let shared = ThemeManager()
-
     @Published public var primaryColor: Color
     @Published public var primaryLightColor: Color
     @Published public var secondaryColor: Color
@@ -21,7 +19,7 @@ public class ThemeManager: ObservableObject {
 
     @Published public var font: Font
 
-    private init() {
+    public init() {
         self.primaryColor = Color("PrimaryColor")
         self.primaryLightColor = Color("PrimaryLightColor")
         self.secondaryColor = Color("SecondaryColor")
@@ -31,7 +29,7 @@ public class ThemeManager: ObservableObject {
         self.notrColor = Color("NotrColor")
         self.notrDarkerColor = Color("NotrDarkerColor")
 
-        self.font = Font.custom("System", size: 16) // Varsayılan font
+        self.font = Font.custom("System", size: 16)
     }
 
     public func updateFont(name: String, size: CGFloat) {
@@ -49,28 +47,28 @@ public class ThemeManager: ObservableObject {
         notrDarkerColor: String?
     ) {
         if let primaryColor = primaryColor {
-            self.primaryColor = Color(primaryColor)
+            self.primaryColor = Color(hex: primaryColor)
         }
         if let primaryLightColor = primaryLightColor {
-            self.primaryLightColor = Color(primaryLightColor)
+            self.primaryLightColor = Color(hex: primaryLightColor)
         }
         if let secondaryColor = secondaryColor {
-            self.secondaryColor = Color(secondaryColor)
+            self.secondaryColor = Color(hex: secondaryColor)
         }
         if let backgroundColor = backgroundColor {
-            self.backgroundColor = Color(backgroundColor)
+            self.backgroundColor = Color(hex: backgroundColor)
         }
         if let primaryTextColor = primaryTextColor {
-            self.primaryTextColor = Color(primaryTextColor)
+            self.primaryTextColor = Color(hex: primaryTextColor)
         }
         if let lightTextColor = lightTextColor {
-            self.lightTextColor = Color(lightTextColor)
+            self.lightTextColor = Color(hex: lightTextColor)
         }
         if let notrColor = notrColor {
-            self.notrColor = Color(notrColor)
+            self.notrColor = Color(hex: notrColor)
         }
         if let notrDarkerColor = notrDarkerColor {
-            self.notrDarkerColor = Color(notrDarkerColor)
+            self.notrDarkerColor = Color(hex: notrDarkerColor)
         }
     }
 }

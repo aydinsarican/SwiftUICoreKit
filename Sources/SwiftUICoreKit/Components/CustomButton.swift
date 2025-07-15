@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct CustomButton: View {
-    @Environment(\.themeManager) private var theme
+    @EnvironmentObject var theme: ThemeManager
 
     let title: String
     let icon: String?
@@ -33,7 +33,7 @@ public struct CustomButton: View {
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .background(theme.primaryColor)
+            .background(theme.secondaryColor)
             .cornerRadius(10)
         }
         .padding(.horizontal, 16)
@@ -41,7 +41,8 @@ public struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(title: "Button", icon: nil) {
+    CustomButton(title: "Button") {
         //Action
     }
+    .environmentObject(ThemeManager())
 }
