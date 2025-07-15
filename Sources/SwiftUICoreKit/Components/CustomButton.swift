@@ -41,8 +41,6 @@ public struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(title: "Button") {
-        //Action
-    }
+    CustomButton(title: "Button") {}
     .environmentObject(ThemeManager())
 }

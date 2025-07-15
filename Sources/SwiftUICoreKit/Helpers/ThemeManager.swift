@@ -20,14 +20,14 @@ public class ThemeManager: ObservableObject {
     @Published public var font: Font
 
     public init() {
-        self.primaryColor = Color("PrimaryColor")
-        self.primaryLightColor = Color("PrimaryLightColor")
-        self.secondaryColor = Color("SecondaryColor")
-        self.backgroundColor = Color("BackgroundColor")
-        self.primaryTextColor = Color("PrimaryTextColor")
-        self.lightTextColor = Color("LightTextColor")
-        self.notrColor = Color("NotrColor")
-        self.notrDarkerColor = Color("NotrDarkerColor")
+        self.primaryColor = Color("PrimaryColor", bundle: .module)
+        self.primaryLightColor = Color("PrimaryLightColor", bundle: .module)
+        self.secondaryColor = Color("SecondaryColor", bundle: .module)
+        self.backgroundColor = Color("BackgroundColor", bundle: .module)
+        self.primaryTextColor = Color("PrimaryTextColor", bundle: .module)
+        self.lightTextColor = Color("LightTextColor", bundle: .module)
+        self.notrColor = Color("NotrColor", bundle: .module)
+        self.notrDarkerColor = Color("NotrDarkerColor", bundle: .module)
 
         self.font = Font.custom("System", size: 16)
     }

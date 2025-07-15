@@ -8,6 +8,8 @@
 import SwiftUI
 
 public struct CustomCardView: View {
+    @EnvironmentObject var theme: ThemeManager
+
     let image: String
     let title: String
     let subtitle: String
@@ -28,7 +30,7 @@ public struct CustomCardView: View {
                 .foregroundColor(.secondary)
         }
         .padding()
-        .background(Color.white)
+        .background(theme.primaryColor)
         .cornerRadius(12)
         .shadow(radius: 4)
     }
@@ -36,4 +38,5 @@ public struct CustomCardView: View {
 
 #Preview {
     CustomCardView(image: "person", title: "Title", subtitle: "Subtitle")
+        .environmentObject(ThemeManager())
 }
